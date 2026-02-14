@@ -9,8 +9,8 @@ export function HomePage() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.25,
-        delayChildren: 0.1,
+        staggerChildren: 0.35, // Increased stagger for a more deliberate, cinematic entrance
+        delayChildren: 0.2,
       },
     },
   };
@@ -20,7 +20,7 @@ export function HomePage() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1.2,
+        duration: 1.4,
         ease: [0.16, 1, 0.3, 1]
       },
     },
@@ -31,17 +31,17 @@ export function HomePage() {
       opacity: 0.3,
       scale: 1,
       transition: {
-        duration: 1.5,
-        delay: 1.0,
+        duration: 2,
+        delay: 1.2,
         ease: "easeOut"
       }
     }
   };
   return (
-    <div className="relative min-h-[100dvh] w-full bg-[#050505] overflow-x-hidden font-sans selection:bg-amber-500/30 selection:text-white flex flex-col">
+    <div className="relative min-h-[100dvh] w-full bg-[#050505] overflow-x-hidden font-sans flex flex-col">
       <AmbientBackground />
       {/* Decorative Overlays */}
-      <div className="fixed inset-0 pointer-events-none z-[50] opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" aria-hidden="true" />
+      <div className="fixed inset-0 pointer-events-none z-[40] opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" aria-hidden="true" />
       <div className="fixed inset-0 pointer-events-none z-10 bg-gradient-to-b from-black via-transparent to-black opacity-60" aria-hidden="true" />
       <div className="flex-1 flex flex-col w-full relative z-20">
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex items-center justify-center py-16 md:py-24">
@@ -66,10 +66,10 @@ export function HomePage() {
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center">
                 <img
                   src="https://support.robertsspaceindustries.com/hc/article_attachments/360021770294"
-                  alt="Star Citizen"
+                  alt="Star Citizen Logo"
                   width={80}
                   height={80}
-                  className="w-full h-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1000 ease-in-out cursor-default filter drop-shadow-[0_0_10px_rgba(245,158,11,0.15)]"
+                  className="w-20 h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1000 ease-in-out cursor-default filter drop-shadow-[0_0_10px_rgba(245,158,11,0.15)] object-contain"
                   loading="eager"
                 />
               </div>

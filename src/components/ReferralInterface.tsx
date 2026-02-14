@@ -26,17 +26,19 @@ export const ReferralInterface: React.FC = () => {
         textArea.style.top = "0";
         textArea.setAttribute('readonly', '');
         document.body.appendChild(textArea);
-        textArea.select();
-        const successful = document.execCommand('copy');
-        document.body.removeChild(textArea);
-        if (!successful) throw new Error('Fallback copy command failed');
+        try {
+          textArea.select();
+          const successful = document.execCommand('copy');
+          if (!successful) throw new Error('Fallback copy command failed');
+        } finally {
+          document.body.removeChild(textArea);
+        }
       }
       setCopied(true);
       toast.success('Access Key Copied', {
         description: 'Code stored for enlistment.',
       });
     } catch (err) {
-      // Improved error logging to prevent empty object '{}' output in diagnostics
       const errorMessage = err instanceof Error ? err.message : String(err);
       console.error(`Copy Error: ${errorMessage}`, err);
       toast.error('Copy Failed', {
@@ -61,12 +63,12 @@ export const ReferralInterface: React.FC = () => {
         <div className="relative z-10 flex flex-col items-center text-center space-y-10">
           <div className="space-y-3">
             <motion.div
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               className="flex items-center justify-center gap-2"
+              animate={{ opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="h-1 w-1 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
-              <span className="text-[10px] uppercase tracking-[0.6em] text-amber-500/90 font-black whitespace-nowrap">
+              <div className="h-1.5 w-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)] animate-pulse" />
+              <span className="text-[10px] uppercase tracking-[0.6em] text-amber-500 font-black whitespace-nowrap">
                 Identity Verified
               </span>
             </motion.div>
@@ -93,31 +95,31 @@ export const ReferralInterface: React.FC = () => {
             }}
             className="group relative w-full cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 sm:p-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 select-none transform-gpu transition-all duration-300 shadow-inner"
           >
-            {/* Horizontal scroll support for ultra-narrow screens without showing bar */}
             <div className="flex flex-col items-center gap-4 max-w-full overflow-x-auto no-scrollbar">
-              <span className="text-[10px] font-mono text-zinc-500 tracking-[0.3em] uppercase font-bold whitespace-nowrap">
+              <span className="text-[10px] font-mono text-zinc-400 tracking-[0.3em] uppercase font-bold whitespace-nowrap">
                 Signature Key
               </span>
               <div className="flex items-center gap-6 whitespace-nowrap break-normal">
                 <span className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold tracking-tighter text-white tabular-nums drop-shadow-sm whitespace-nowrap">
                   {REFERRAL_CODE}
                 </span>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={copied ? 'checked' : 'copy'}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.5 }}
-                    transition={{ duration: 0.2 }}
-                    className="shrink-0"
-                  >
-                    {copied ? (
-                      <Check className="h-6 w-6 text-amber-500" />
-                    ) : (
-                      <Copy className="h-6 w-6 text-zinc-500 group-hover:text-amber-400 transition-colors" />
-                    )}
-                  </motion.div>
-                </AnimatePresence>
+                <div aria-live="polite" className="shrink-0">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={copied ? 'checked' : 'copy'}
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {copied ? (
+                        <Check className="h-6 w-6 text-amber-500" />
+                      ) : (
+                        <Copy className="h-6 w-6 text-zinc-500 group-hover:text-amber-400 transition-colors" />
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </div>
             </div>
           </motion.div>
