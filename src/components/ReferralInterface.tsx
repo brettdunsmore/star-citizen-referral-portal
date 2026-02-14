@@ -44,7 +44,7 @@ export const ReferralInterface: React.FC = () => {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="w-full max-w-lg px-4"
     >
-      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-2xl p-8 md:p-12 shadow-glass">
+      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-2xl p-8 md:p-12 shadow-glass transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-glow hover:border-amber-500/20">
         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-transparent pointer-events-none" />
         <div className="relative z-10 flex flex-col items-center text-center space-y-8">
           <div className="space-y-2">
@@ -64,10 +64,10 @@ export const ReferralInterface: React.FC = () => {
             role="button"
             tabIndex={0}
             whileHover={{ scale: 1.02, backgroundColor: "rgba(0,0,0,0.6)" }}
-            whileTap={{ scale: 0.98 }}
+            whileTap={{ scale: 0.96 }}
             onClick={handleCopy}
             onKeyDown={(e) => e.key === 'Enter' && handleCopy()}
-            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-6 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50"
+            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-6 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50 active:scale-95"
           >
             <div className="flex flex-col items-center gap-4">
               <span className="text-[10px] font-mono text-zinc-500 tracking-widest uppercase">Encryption Key</span>
@@ -98,7 +98,7 @@ export const ReferralInterface: React.FC = () => {
               asChild
               className={cn(
                 "h-14 w-full bg-amber-500 text-black hover:bg-amber-400 font-bold text-base transition-all rounded-xl shadow-glow border-none",
-                "relative overflow-hidden shimmer-bg"
+                "relative overflow-hidden group"
               )}
             >
               <a href={ENLIST_URL} target="_blank" rel="noopener noreferrer">
@@ -106,7 +106,7 @@ export const ReferralInterface: React.FC = () => {
                   Enlist Now
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </span>
-                <span className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-shimmer" />
+                <span className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shimmer" />
               </a>
             </Button>
             <p className="text-[11px] text-zinc-500 max-w-[280px] mx-auto leading-relaxed">
