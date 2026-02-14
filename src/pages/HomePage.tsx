@@ -53,7 +53,7 @@ export function HomePage() {
           >
             <motion.header variants={itemVariants} className="mb-8 md:mb-10">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">
-                Welcome <span className="text-zinc-500 transition-colors duration-1000 hover:text-amber-500/60 cursor-default">to the Verse</span>
+                Join me <span className="text-zinc-500 transition-colors duration-1000 hover:text-amber-500/60 cursor-default">in the Verse</span>
               </h1>
             </motion.header>
             <motion.div variants={itemVariants} className="w-full flex justify-center">
