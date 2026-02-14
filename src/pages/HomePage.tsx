@@ -9,7 +9,7 @@ export function HomePage() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.35,
         delayChildren: 0.2,
       },
     },
@@ -20,10 +20,22 @@ export function HomePage() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1.2,
+        duration: 1.4,
         ease: [0.16, 1, 0.3, 1]
       },
     },
+  };
+  const logoVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 0.3,
+      scale: 1,
+      transition: {
+        duration: 2,
+        delay: 1.2,
+        ease: "easeOut"
+      }
+    }
   };
   return (
     <div className="relative min-h-[100dvh] w-full bg-[#050505] overflow-x-hidden font-sans selection:bg-amber-500/30 selection:text-white flex flex-col">
@@ -51,7 +63,7 @@ export function HomePage() {
               <ReferralInterface />
             </motion.div>
             <motion.div
-              variants={itemVariants}
+              variants={logoVariants}
               className="mt-20 md:mt-28"
             >
               <div className="relative w-24 sm:w-32 h-24 sm:h-32 mx-auto flex items-center justify-center">
@@ -60,14 +72,14 @@ export function HomePage() {
                   alt="Star Citizen"
                   width={128}
                   height={128}
-                  className="w-full h-auto opacity-30 hover:opacity-100 transition-opacity duration-1000 ease-in-out cursor-default grayscale hover:grayscale-0"
+                  className="w-full h-auto grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-1000 ease-in-out cursor-default"
                   loading="eager"
                 />
               </div>
             </motion.div>
             <motion.footer
               variants={itemVariants}
-              className="mt-12 md:mt-16 text-[9px] uppercase tracking-[0.6em] text-zinc-600 font-bold px-4"
+              className="mt-12 md:mt-16 text-[9px] uppercase tracking-[0.4em] sm:tracking-[0.6em] text-zinc-600 font-bold px-4 max-w-[90vw] mx-auto"
             >
               Star Citizen is a registered trademark of Cloud Imperium Games.
             </motion.footer>
@@ -77,7 +89,7 @@ export function HomePage() {
       <Toaster
         position="bottom-center"
         toastOptions={{
-          className: 'bg-zinc-950/90 backdrop-blur-xl text-white border-zinc-800 shadow-2xl font-sans rounded-xl p-4',
+          className: 'bg-zinc-950/95 backdrop-blur-2xl text-white border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] font-sans rounded-2xl p-5 border border-zinc-800/50',
           duration: 4000,
         }}
       />

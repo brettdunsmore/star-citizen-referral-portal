@@ -9,6 +9,14 @@ const REFERRAL_CODE = 'STAR-XCTW-2GM7';
 const ENLIST_URL = 'https://www.robertsspaceindustries.com/enlist?referral=STAR-XCTW-2GM7';
 export const ReferralInterface: React.FC = () => {
   const [copied, setCopied] = useState(false);
+  const onCopySuccess = useCallback(() => {
+    setCopied(true);
+    toast.success('Encryption Key Copied', {
+      description: 'The referral code is ready for your enlistment.',
+      duration: 4000,
+    });
+    setTimeout(() => setCopied(false), 2000);
+  }, []);
   const handleCopy = useCallback(async () => {
     try {
       // Primary Method: Modern Clipboard API
@@ -19,11 +27,10 @@ export const ReferralInterface: React.FC = () => {
         // Secondary Method: Legacy Textarea Fallback
         const textArea = document.createElement("textarea");
         textArea.value = REFERRAL_CODE;
-        // Ensure the textarea is hidden but part of the DOM
         textArea.style.position = "fixed";
         textArea.style.left = "-9999px";
         textArea.style.top = "0";
-        textArea.setAttribute('readonly', ''); // Prevent keyboard popup on mobile
+        textArea.readOnly = true; // Use property directly for better compatibility
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
@@ -44,15 +51,7 @@ export const ReferralInterface: React.FC = () => {
         description: `Manual override required: ${REFERRAL_CODE}`,
       });
     }
-  }, []);
-  const onCopySuccess = () => {
-    setCopied(true);
-    toast.success('Encryption Key Copied', {
-      description: 'The referral code is ready for your enlistment.',
-      duration: 4000,
-    });
-    setTimeout(() => setCopied(false), 2000);
-  };
+  }, [onCopySuccess]);
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -90,7 +89,7 @@ export const ReferralInterface: React.FC = () => {
                 handleCopy();
               }
             }}
-            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-5 sm:p-6 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50 select-none"
+            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-5 sm:p-6 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50 select-none transform-gpu"
           >
             <div className="flex flex-col items-center gap-3 sm:gap-4">
               <span className="text-[9px] sm:text-[10px] font-mono text-zinc-500 tracking-widest uppercase font-semibold">Encryption Key</span>
@@ -121,7 +120,7 @@ export const ReferralInterface: React.FC = () => {
               asChild
               className={cn(
                 "h-14 w-full bg-amber-500 text-black hover:bg-amber-400 font-bold text-base transition-all rounded-xl shadow-glow border-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black active:scale-[0.98]",
-                "relative overflow-hidden group/btn"
+                "relative overflow-hidden group/btn transform-gpu"
               )}
             >
               <a href={ENLIST_URL} target="_blank" rel="noopener noreferrer">
