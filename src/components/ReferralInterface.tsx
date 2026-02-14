@@ -49,7 +49,7 @@ export const ReferralInterface: React.FC = () => {
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ 
+      whileHover={{
         y: -5,
         boxShadow: "0 20px 40px -15px rgba(251, 191, 36, 0.15)"
       }}
@@ -142,7 +142,7 @@ export const ReferralInterface: React.FC = () => {
               </a>
             </Button>
             <p className="text-[10px] text-zinc-500 max-w-[280px] mx-auto leading-relaxed font-medium">
-              Join the verse today to secure <span className="text-amber-500/90 font-bold">5,000 UEC</span> bonus credits for your initial journey.
+              Join the verse today to secure <span className="text-amber-500/90 font-bold">5,000 UEC</span> bonus credits.
             </p>
           </div>
         </div>
