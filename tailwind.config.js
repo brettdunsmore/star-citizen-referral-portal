@@ -71,10 +71,6 @@ export default {
   				'0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
   				'50%': { opacity: '1', transform: 'scale(1.02)' }
   			},
-        'float-slow': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' }
-        },
         'shimmer': {
           '100%': { transform: 'translateX(100%)' }
         }
@@ -82,7 +78,6 @@ export default {
   		animation: {
   			'fade-in': 'fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
   			'glow-pulse': 'glow-pulse 4s ease-in-out infinite',
-        'float-slow': 'float-slow 6s ease-in-out infinite',
         'shimmer': 'shimmer 2s linear infinite'
   		}
   	}

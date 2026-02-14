@@ -1,27 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Copy, Check, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+const REFERRAL_CODE = 'STAR-XCTW-2GM7';
+const ENLIST_URL = 'https://www.robertsspaceindustries.com/enlist?referral=STAR-XCTW-2GM7';
 export const ReferralInterface: React.FC = () => {
   const [copied, setCopied] = useState(false);
-  const REFERRAL_CODE = 'STAR-XCTW-2GM7';
-  const ENLIST_URL = 'https://www.robertsspaceindustries.com/enlist?referral=STAR-XCTW-2GM7';
-  const handleCopy = async () => {
+  const handleCopy = useCallback(async () => {
     try {
+      // Modern Clipboard API with fallback for non-secure contexts or older browsers
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(REFERRAL_CODE);
       } else {
         const textArea = document.createElement("textarea");
         textArea.value = REFERRAL_CODE;
+        // Ensure the element isn't visible but part of the DOM for selection
         textArea.style.position = "fixed";
         textArea.style.left = "-9999px";
+        textArea.style.top = "0";
         document.body.appendChild(textArea);
+        textArea.focus();
         textArea.select();
-        document.execCommand('copy');
+        const successful = document.execCommand('copy');
         document.body.removeChild(textArea);
+        if (!successful) throw new Error('execCommand copy failed');
       }
       setCopied(true);
       toast.success('Code copied to clipboard', {
@@ -31,12 +36,13 @@ export const ReferralInterface: React.FC = () => {
       });
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
+      console.error('Clipboard copy failed:', err);
       toast.error('Failed to copy', {
-        description: 'Please copy manually: ' + REFERRAL_CODE,
+        description: `Please copy manually: ${REFERRAL_CODE}`,
         className: 'bg-zinc-950 text-white border-zinc-800',
       });
     }
-  };
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -44,7 +50,7 @@ export const ReferralInterface: React.FC = () => {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="w-full max-w-lg px-4"
     >
-      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-2xl p-8 md:p-12 shadow-glass transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-glow hover:border-amber-500/20">
+      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-2xl p-8 md:p-12 shadow-glass transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-glow hover:border-amber-500/20 transform-gpu">
         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-transparent pointer-events-none" />
         <div className="relative z-10 flex flex-col items-center text-center space-y-8">
           <div className="space-y-2">
@@ -62,11 +68,17 @@ export const ReferralInterface: React.FC = () => {
           </div>
           <motion.div
             role="button"
+            aria-label={`Copy referral code ${REFERRAL_CODE}`}
             tabIndex={0}
             whileHover={{ scale: 1.02, backgroundColor: "rgba(0,0,0,0.6)" }}
             whileTap={{ scale: 0.96 }}
             onClick={handleCopy}
-            onKeyDown={(e) => e.key === 'Enter' && handleCopy()}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleCopy();
+              }
+            }}
             className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-6 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50 active:scale-95"
           >
             <div className="flex flex-col items-center gap-4">

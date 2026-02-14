@@ -42,18 +42,12 @@
   }
 }
 @layer components {
-  .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-glass;
-  }
   .shimmer-bg {
     @apply relative overflow-hidden;
   }
   .shimmer-bg::after {
     @apply absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent;
     content: '';
-  }
-  .shadow-glow {
-    box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.4);
   }
 }
 @layer utilities {
