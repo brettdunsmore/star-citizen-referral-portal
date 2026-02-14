@@ -43,8 +43,7 @@ export function HomePage() {
                   Welcome <span className="text-zinc-600">to the Verse!</span>
                 </h1>
                 <p className="text-lg md:text-xl text-zinc-400 max-w-xl mx-auto leading-relaxed font-light">
-                  Embark on an odyssey across the stars. Claim your starting bonus
-                  and join the persistent universe of Star Citizen.
+                  Claim your starting bonus and join the persistent universe of Star Citizen.
                 </p>
               </motion.header>
               <motion.div variants={itemVariants} className="w-full flex justify-center">
