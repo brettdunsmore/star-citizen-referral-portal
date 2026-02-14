@@ -14,7 +14,6 @@ export const ReferralInterface: React.FC = () => {
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(REFERRAL_CODE);
       } else {
-        // Robust fallback for legacy environments
         const textArea = document.createElement("textarea");
         textArea.value = REFERRAL_CODE;
         textArea.style.position = "fixed";
@@ -32,7 +31,6 @@ export const ReferralInterface: React.FC = () => {
         description: 'Code stored in your local buffer.',
         duration: 3000,
       });
-      // Auto-reset state for visual feedback loop
       const timer = setTimeout(() => setCopied(false), 2000);
       return () => clearTimeout(timer);
     } catch (err) {
@@ -63,7 +61,7 @@ export const ReferralInterface: React.FC = () => {
               </span>
             </motion.div>
             <h2 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-white">
-              Recruitment Monolith
+              Access Granted
             </h2>
           </div>
           <motion.div
