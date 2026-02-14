@@ -30,14 +30,12 @@ export const ReferralInterface: React.FC = () => {
       toast.success('Code copied to clipboard', {
         description: 'Prepare for liftoff, Citizen.',
         duration: 3000,
-        className: 'bg-zinc-950 text-white border-zinc-800 shadow-2xl',
       });
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error('Clipboard copy failed:', err);
       toast.error('Failed to copy', {
         description: `Please copy manually: ${REFERRAL_CODE}`,
-        className: 'bg-zinc-950 text-white border-zinc-800',
       });
     }
   }, []);
@@ -46,9 +44,9 @@ export const ReferralInterface: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full max-w-lg px-4"
+      className="w-full max-w-lg px-2 sm:px-4"
     >
-      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-2xl p-8 md:p-12 shadow-glass transition-all duration-700 ease-out hover:scale-[1.01] hover:-translate-y-1 hover:shadow-glow hover:border-amber-500/20 transform-gpu">
+      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-2xl p-6 sm:p-8 md:p-12 shadow-glass transition-all duration-700 ease-out hover:scale-[1.01] hover:-translate-y-1 hover:shadow-glow hover:border-amber-500/20 transform-gpu">
         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-transparent pointer-events-none animate-glow-pulse" />
         <div className="relative z-10 flex flex-col items-center text-center space-y-8">
           <div className="space-y-2">
@@ -60,7 +58,7 @@ export const ReferralInterface: React.FC = () => {
                 Access Granted
               </span>
             </motion.div>
-            <h2 className="text-3xl font-display font-extrabold tracking-tight text-white">
+            <h2 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-white">
               Enlistment Portal
             </h2>
           </div>
@@ -77,12 +75,12 @@ export const ReferralInterface: React.FC = () => {
                 handleCopy();
               }
             }}
-            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-6 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50"
+            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-5 sm:p-6 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50"
           >
-            <div className="flex flex-col items-center gap-4">
-              <span className="text-[10px] font-mono text-zinc-400 tracking-widest uppercase font-medium">Encryption Key</span>
-              <div className="flex items-center gap-4">
-                <span className="text-2xl md:text-3xl font-mono font-bold tracking-tighter text-white">
+            <div className="flex flex-col items-center gap-3 sm:gap-4">
+              <span className="text-[9px] sm:text-[10px] font-mono text-zinc-400 tracking-widest uppercase font-medium">Encryption Key</span>
+              <div className="flex items-center gap-3 sm:gap-4">
+                <span className="text-xl sm:text-2xl md:text-3xl font-mono font-bold tracking-tighter text-white">
                   {REFERRAL_CODE}
                 </span>
                 <AnimatePresence mode="wait">
@@ -107,7 +105,7 @@ export const ReferralInterface: React.FC = () => {
             <Button
               asChild
               className={cn(
-                "h-14 w-full bg-amber-500 text-black hover:bg-amber-400 font-bold text-base transition-all rounded-xl shadow-glow border-none",
+                "h-14 w-full bg-amber-500 text-black hover:bg-amber-400 font-bold text-base transition-all rounded-xl shadow-glow border-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
                 "relative overflow-hidden group"
               )}
             >
