@@ -1,6 +1,6 @@
 # Citizen Referral App
 
-[![Deploy to Cloudflare][cloudflarebutton]]
+[![Deploy to Cloudflare][![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/brettdunsmore/star-citizen-referral-portal)]
 
 A modern, full-stack web application for managing citizen referrals, built with React, TypeScript, and Cloudflare Workers. This app provides a responsive UI for referral tracking, user management, and analytics, powered by a serverless backend.
 
@@ -122,7 +122,7 @@ For **Pages integration** (recommended for assets):
 - Bind ASSETS in Wrangler dashboard to your Pages project.
 - Deploy Pages project separately for static assets.
 
-[Deploy to Cloudflare][cloudflarebutton]
+[Deploy to Cloudflare][![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/brettdunsmore/star-citizen-referral-portal)
 
 ## Project Structure
 
