@@ -7,7 +7,7 @@ import { Card } from '@/components/ui/card';
 export const ReferralInterface: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const REFERRAL_CODE = 'STAR-XCTW-2GM7';
-  const ENLIST_URL = `https://www.robertsspaceindustries.com/enlist?referral=${REFERRAL_CODE}`;
+  const ENLIST_URL = 'https://www.robertsspaceindustries.com/enlist?referral=STAR-XCTW-2GM7';
   const fallbackCopyTextToClipboard = (text: string) => {
     const textArea = document.createElement("textarea");
     textArea.value = text;
@@ -61,16 +61,16 @@ export const ReferralInterface: React.FC = () => {
   };
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       className="w-full max-w-lg px-4"
     >
-      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-xl p-8 md:p-12 shadow-glass">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent pointer-events-none" />
+      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-xl p-8 md:p-12 shadow-glass transition-transform duration-500 hover:scale-[1.01]">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent pointer-events-none" />
         <div className="relative z-10 flex flex-col items-center text-center space-y-8">
           <div className="space-y-2">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-amber-500/80 font-bold">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-amber-400 font-bold drop-shadow-sm">
               Access Granted
             </span>
             <h2 className="text-3xl font-display font-extrabold tracking-tight text-white">
@@ -121,7 +121,7 @@ export const ReferralInterface: React.FC = () => {
           <div className="grid w-full grid-cols-1 gap-4">
             <Button
               asChild
-              className="h-14 bg-amber-500 text-black hover:bg-amber-400 font-bold text-base transition-all rounded-xl shadow-primary hover:shadow-glow"
+              className="h-14 bg-amber-500 text-black hover:bg-amber-400 font-bold text-base transition-all rounded-xl shadow-primary hover:shadow-glow border-none"
             >
               <a href={ENLIST_URL} target="_blank" rel="noopener noreferrer">
                 Enlist Now
@@ -129,7 +129,7 @@ export const ReferralInterface: React.FC = () => {
               </a>
             </Button>
             <p className="text-xs text-zinc-400 max-w-[280px] mx-auto leading-relaxed">
-              Use this code to receive <span className="text-amber-500/80 font-semibold">5,000 UEC</span> starting credits in-game.
+              Use this code to receive <span className="text-amber-400 font-bold">5,000 UEC</span> starting credits in-game.
             </p>
           </div>
         </div>

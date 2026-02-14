@@ -32,7 +32,7 @@ export function HomePage() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex flex-col items-center text-center w-full py-12 md:py-0"
+        className="relative z-10 flex flex-col items-center text-center w-full py-16 md:py-0"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col items-center">
@@ -50,7 +50,7 @@ export function HomePage() {
             </motion.div>
             <motion.footer
               variants={itemVariants}
-              className="mt-24 text-[10px] uppercase tracking-[0.4em] text-zinc-600 font-medium px-4"
+              className="mt-24 text-[10px] uppercase tracking-[0.4em] text-zinc-500 font-medium px-4"
             >
               Star Citizen & RSI are trademarks of Cloud Imperium Rights LLC.
             </motion.footer>
@@ -59,7 +59,12 @@ export function HomePage() {
       </motion.main>
       {/* Decorative grain/overlay */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
-      <Toaster position="bottom-center" />
+      <Toaster 
+        position="bottom-center" 
+        toastOptions={{
+          className: 'bg-zinc-950 text-white border-zinc-800 shadow-2xl',
+        }}
+      />
     </div>
   );
 }

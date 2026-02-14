@@ -20,9 +20,10 @@ export const AmbientBackground: React.FC = () => {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
         this.size = Math.random() * 1.5 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.2;
-        this.speedY = (Math.random() - 0.5) * 0.2;
-        this.opacity = Math.random() * 0.5 + 0.1;
+        // Decreased speed for a more serene atmosphere
+        this.speedX = (Math.random() - 0.5) * 0.15;
+        this.speedY = (Math.random() - 0.5) * 0.15;
+        this.opacity = Math.random() * 0.4 + 0.1;
       }
       update(width: number, height: number) {
         this.x += this.speedX;
@@ -64,7 +65,7 @@ export const AmbientBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0 bg-[#050505]"
-      style={{ filter: 'blur(1px)' }}
+      style={{ filter: 'blur(1.5px)' }}
     />
   );
 };
