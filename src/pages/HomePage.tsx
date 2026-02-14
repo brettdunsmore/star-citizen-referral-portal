@@ -53,13 +53,10 @@ export function HomePage() {
             animate="visible"
             className="flex flex-col items-center text-center w-full max-w-4xl"
           >
-            <motion.header variants={itemVariants} className="mb-12 md:mb-16 space-y-6">
+            <motion.header variants={itemVariants} className="mb-8 md:mb-12 space-y-6">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-[0_0_25px_rgba(255,255,255,0.15)]">
                 Welcome <span className="text-zinc-500 transition-colors duration-1000 hover:text-amber-500/50 cursor-default">to the Verse!</span>
               </h1>
-              <p className="text-lg md:text-xl text-zinc-400 max-w-xl mx-auto leading-relaxed font-light">
-                Become a Star Citizen and get <span className="text-white font-medium border-b border-amber-500/30">5,000 free Credits</span>
-              </p>
             </motion.header>
             <motion.div variants={itemVariants} className="w-full flex justify-center">
               <ReferralInterface />
