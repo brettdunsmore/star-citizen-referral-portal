@@ -4,7 +4,7 @@
  */
  {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "citizen-referral-min-3w2--oi68r2l3gxd5lvwv",
+	"name": "star-citizen-referral-portal",
 	"main": "worker/index.ts",
 	"compatibility_date": "2025-04-24",
 	"assets": {
