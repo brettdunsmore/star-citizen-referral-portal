@@ -49,9 +49,17 @@ export function HomePage() {
               <motion.div variants={itemVariants} className="w-full flex justify-center">
                 <ReferralInterface />
               </motion.div>
+              {/* Branding Integration */}
+              <motion.div variants={itemVariants} className="mt-24 md:mt-32">
+                <img 
+                  src="https://support.robertsspaceindustries.com/hc/article_attachments/360021770294" 
+                  alt="Star Citizen Logo" 
+                  className="mx-auto block w-24 sm:w-32 h-auto mb-12 md:mb-16 opacity-60 hover:opacity-100 transition-opacity duration-700"
+                />
+              </motion.div>
               <motion.footer
                 variants={itemVariants}
-                className="mt-24 md:mt-32 text-[9px] uppercase tracking-[0.6em] text-zinc-600 font-bold"
+                className="mt-12 md:mt-16 text-[9px] uppercase tracking-[0.6em] text-zinc-600 font-bold"
               >
                 Star Citizen is a registered trademark of Cloud Imperium Games.
               </motion.footer>
