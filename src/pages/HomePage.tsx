@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Toaster } from '@/components/ui/sonner';
 import { AmbientBackground } from '@/components/AmbientBackground';
 import { ReferralInterface } from '@/components/ReferralInterface';
 export function HomePage() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -14,12 +14,15 @@ export function HomePage() {
       },
     },
   };
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { 
+        duration: 0.8, 
+        ease: "easeOut" 
+      },
     },
   };
   return (
@@ -38,15 +41,15 @@ export function HomePage() {
                 Citizenship <span className="text-zinc-500">Awaits</span>
               </h1>
               <p className="text-lg md:text-xl text-zinc-400 max-w-lg mx-auto leading-relaxed">
-                Join the universe of Star Citizen with a premium starting bonus. 
+                Join the universe of Star Citizen with a premium starting bonus.
                 Your journey to the stars begins here.
               </p>
             </motion.header>
             <motion.div variants={itemVariants} className="w-full flex justify-center">
               <ReferralInterface />
             </motion.div>
-            <motion.footer 
-              variants={itemVariants} 
+            <motion.footer
+              variants={itemVariants}
               className="mt-24 text-[10px] uppercase tracking-[0.4em] text-zinc-600 font-medium"
             >
               Star Citizen & RSI are trademarks of Cloud Imperium Rights LLC.

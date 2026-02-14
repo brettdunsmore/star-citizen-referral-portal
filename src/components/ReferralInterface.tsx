@@ -4,23 +4,54 @@ import { Copy, Check, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 export const ReferralInterface: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const REFERRAL_CODE = 'STAR-XCTW-2GM7';
-  const ENLIST_URL = `https://robertsspaceindustries.com/enlist?referral=${REFERRAL_CODE}`;
-  const handleCopy = async () => {
+  const ENLIST_URL = `https://www.robertsspaceindustries.com/enlist?referral=${REFERRAL_CODE}`;
+  const fallbackCopyTextToClipboard = (text: string) => {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    // Ensure the textarea is not visible or affecting layout
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "0";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
     try {
-      await navigator.clipboard.writeText(REFERRAL_CODE);
-      setCopied(true);
-      toast.success('Code copied to clipboard', {
-        description: 'You are ready to enlist, Citizen.',
-        className: 'bg-zinc-900 text-white border-zinc-800',
-      });
-      setTimeout(() => setCopied(false), 2000);
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      return successful;
     } catch (err) {
-      toast.error('Failed to copy code');
-      console.error(err);
+      console.error('Fallback: Oops, unable to copy', err);
+      document.body.removeChild(textArea);
+      return false;
+    }
+  };
+  const handleCopy = async () => {
+    let success = false;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(REFERRAL_CODE);
+        success = true;
+      } else {
+        success = fallbackCopyTextToClipboard(REFERRAL_CODE);
+      }
+      if (success) {
+        setCopied(true);
+        toast.success('Code copied to clipboard', {
+          description: 'You are ready to enlist, Citizen.',
+          className: 'bg-zinc-900 text-white border-zinc-800',
+        });
+        setTimeout(() => setCopied(false), 2000);
+      } else {
+        throw new Error('Copy command failed');
+      }
+    } catch (err) {
+      toast.error('Failed to copy code', {
+        description: 'Please manually copy: ' + REFERRAL_CODE
+      });
+      console.error('Clipboard Error:', err);
     }
   };
   return (
@@ -41,7 +72,7 @@ export const ReferralInterface: React.FC = () => {
               Enlistment Portal
             </h2>
           </div>
-          <div 
+          <div
             onClick={handleCopy}
             className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-6 transition-all hover:border-amber-500/40 hover:bg-black/60 active:scale-[0.98]"
           >
