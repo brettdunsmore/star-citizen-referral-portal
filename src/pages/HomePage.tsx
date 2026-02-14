@@ -42,7 +42,7 @@ export function HomePage() {
                   Welcome <span className="text-zinc-500 transition-colors duration-1000">to the Verse!</span>
                 </h1>
                 <p className="text-lg md:text-xl text-zinc-400 max-w-xl mx-auto leading-relaxed font-light">
-                  Claim your starting bonus and join the persistent universe of Star Citizen.
+                  Become a Star Citizen @RobertsSpaceInd and get 5,000 free Credits
                 </p>
               </motion.header>
               <motion.div variants={itemVariants} className="w-full flex justify-center">
