@@ -4,7 +4,7 @@
  */
  {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "vite-reference",
+	"name": "citizen-referral-min-3w2--oi68r2l3gxd5lvwv",
 	"main": "worker/index.ts",
 	"compatibility_date": "2025-04-24",
 	"assets": {
