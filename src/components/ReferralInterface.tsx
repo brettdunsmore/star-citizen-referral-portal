@@ -29,14 +29,16 @@ export const ReferralInterface: React.FC = () => {
         textArea.select();
         const successful = document.execCommand('copy');
         document.body.removeChild(textArea);
-        if (!successful) throw new Error('Fallback copy failed');
+        if (!successful) throw new Error('Fallback copy command failed');
       }
       setCopied(true);
       toast.success('Access Key Copied', {
         description: 'Code stored for enlistment.',
       });
     } catch (err) {
-      console.error('Copy Error:', err);
+      // Improved error logging to prevent empty object '{}' output in diagnostics
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      console.error(`Copy Error: ${errorMessage}`, err);
       toast.error('Copy Failed', {
         description: `Manual copy required: ${REFERRAL_CODE}`,
       });
@@ -64,11 +66,11 @@ export const ReferralInterface: React.FC = () => {
               className="flex items-center justify-center gap-2"
             >
               <div className="h-1 w-1 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
-              <span className="text-[10px] uppercase tracking-[0.6em] text-amber-500/90 font-black">
+              <span className="text-[10px] uppercase tracking-[0.6em] text-amber-500/90 font-black whitespace-nowrap">
                 Identity Verified
               </span>
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-white whitespace-nowrap">
               Access Granted
             </h2>
           </div>
@@ -91,10 +93,13 @@ export const ReferralInterface: React.FC = () => {
             }}
             className="group relative w-full cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 sm:p-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 select-none transform-gpu transition-all duration-300 shadow-inner"
           >
-            <div className="flex flex-col items-center gap-4">
-              <span className="text-[10px] font-mono text-zinc-500 tracking-[0.3em] uppercase font-bold">Signature Key</span>
-              <div className="flex items-center gap-6">
-                <span className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold tracking-tighter text-white tabular-nums drop-shadow-sm">
+            {/* Horizontal scroll support for ultra-narrow screens without showing bar */}
+            <div className="flex flex-col items-center gap-4 max-w-full overflow-x-auto no-scrollbar">
+              <span className="text-[10px] font-mono text-zinc-500 tracking-[0.3em] uppercase font-bold whitespace-nowrap">
+                Signature Key
+              </span>
+              <div className="flex items-center gap-6 whitespace-nowrap break-normal">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold tracking-tighter text-white tabular-nums drop-shadow-sm whitespace-nowrap">
                   {REFERRAL_CODE}
                 </span>
                 <AnimatePresence mode="wait">
@@ -104,6 +109,7 @@ export const ReferralInterface: React.FC = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.2 }}
+                    className="shrink-0"
                   >
                     {copied ? (
                       <Check className="h-6 w-6 text-amber-500" />
@@ -124,7 +130,7 @@ export const ReferralInterface: React.FC = () => {
               )}
             >
               <a href={ENLIST_URL} target="_blank" rel="noopener noreferrer">
-                <span className="relative z-10 flex items-center justify-center gap-2 tracking-wide uppercase">
+                <span className="relative z-10 flex items-center justify-center gap-2 tracking-wide uppercase whitespace-nowrap">
                   Enlist for Duty
                   <ExternalLink className="h-4 w-4 shrink-0 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                 </span>
