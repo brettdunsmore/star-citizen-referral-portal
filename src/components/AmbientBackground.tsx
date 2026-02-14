@@ -4,11 +4,11 @@ export const AmbientBackground: React.FC = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const particleCount = 60;
+    const particleCount = 50;
     class Particle {
       x: number;
       y: number;
@@ -19,11 +19,11 @@ export const AmbientBackground: React.FC = () => {
       constructor(width: number, height: number) {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 1.5 + 0.5;
-        // Speeds adjusted for subtle, cinematic drifting
-        this.speedX = (Math.random() - 0.5) * 0.1;
-        this.speedY = (Math.random() - 0.5) * 0.1;
-        this.opacity = Math.random() * 0.3 + 0.1;
+        this.size = Math.random() * 1.2 + 0.4;
+        this.speedX = (Math.random() - 0.5) * 0.08;
+        this.speedY = (Math.random() - 0.5) * 0.08;
+        // Adjusted opacity to be strictly ambient and cinematic
+        this.opacity = Math.random() * 0.2 + 0.05;
       }
       update(width: number, height: number) {
         this.x += this.speedX;
@@ -34,12 +34,10 @@ export const AmbientBackground: React.FC = () => {
         else if (this.y < 0) this.y = height;
       }
       rescale(oldWidth: number, oldHeight: number, newWidth: number, newHeight: number) {
-        // Guard against division by zero or NaN during rapid window resizing
         const ratioX = oldWidth > 0 ? newWidth / oldWidth : 1;
         const ratioY = oldHeight > 0 ? newHeight / oldHeight : 1;
         this.x = this.x * ratioX;
         this.y = this.y * ratioY;
-        // Final safety check for NaN values
         if (isNaN(this.x)) this.x = Math.random() * newWidth;
         if (isNaN(this.y)) this.y = Math.random() * newHeight;
       }
@@ -64,16 +62,15 @@ export const AmbientBackground: React.FC = () => {
       }
     };
     const render = () => {
-      // Use low-alpha clear for a very slight motion trail effect if desired, 
-      // but here we stick to clean clear for minimalism
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Use black fill instead of clearRect for slight performance optimization with alpha: false
+      ctx.fillStyle = '#050505';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < particles.length; i++) {
         particles[i].update(canvas.width, canvas.height);
         particles[i].draw(ctx);
       }
       animationFrameId = requestAnimationFrame(render);
     };
-    // Initialize dimensions explicitly before first render
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     window.addEventListener('resize', resize);
@@ -88,7 +85,7 @@ export const AmbientBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0 bg-[#050505]"
-      style={{ filter: 'blur(1px)' }}
+      style={{ filter: 'blur(0.5px)' }}
     />
   );
 };

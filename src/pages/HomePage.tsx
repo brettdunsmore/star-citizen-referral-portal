@@ -3,40 +3,40 @@ import { motion, Variants } from 'framer-motion';
 import { Toaster } from '@/components/ui/sonner';
 import { AmbientBackground } from '@/components/AmbientBackground';
 import { ReferralInterface } from '@/components/ReferralInterface';
-export function HomePage() {
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.35,
-        delayChildren: 0.2,
-      },
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.35,
+      delayChildren: 0.2,
     },
-  };
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1.4,
-        ease: [0.16, 1, 0.3, 1]
-      },
+  },
+};
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.4,
+      ease: [0.16, 1, 0.3, 1]
     },
-  };
-  const logoVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.98 },
-    visible: {
-      opacity: 0.3,
-      scale: 1,
-      transition: {
-        duration: 2,
-        delay: 1.2,
-        ease: "easeOut"
-      }
+  },
+};
+const logoVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 2,
+      delay: 1.2,
+      ease: "easeOut"
     }
-  };
+  }
+};
+export function HomePage() {
   return (
     <div className="relative min-h-[100dvh] w-full bg-[#050505] overflow-x-hidden font-sans flex flex-col">
       <AmbientBackground />
@@ -53,7 +53,7 @@ export function HomePage() {
           >
             <motion.header variants={itemVariants} className="mb-8 md:mb-10">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">
-                Welcome <span className="text-zinc-600 transition-colors duration-1000 hover:text-amber-500/40 cursor-default">to the Verse</span>
+                Welcome <span className="text-zinc-500 transition-colors duration-1000 hover:text-amber-500/60 cursor-default">to the Verse</span>
               </h1>
             </motion.header>
             <motion.div variants={itemVariants} className="w-full flex justify-center">

@@ -39,8 +39,7 @@ export const ReferralInterface: React.FC = () => {
         description: 'Code stored for enlistment.',
       });
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : String(err);
-      console.error(`Copy Error: ${errorMessage}`, err);
+      console.error('Copy Error:', err);
       toast.error('Copy Failed', {
         description: `Manual copy required: ${REFERRAL_CODE}`,
       });
@@ -50,10 +49,13 @@ export const ReferralInterface: React.FC = () => {
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -3 }}
+      whileHover={{ 
+        y: -5,
+        boxShadow: "0 20px 40px -15px rgba(251, 191, 36, 0.15)"
+      }}
       transition={{
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1]
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1]
       }}
       className="w-full max-w-2xl px-4"
     >
@@ -82,8 +84,8 @@ export const ReferralInterface: React.FC = () => {
             tabIndex={0}
             whileHover={{
               scale: 1.005,
-              backgroundColor: "rgba(0,0,0,0.6)",
-              borderColor: "rgba(255,255,255,0.15)"
+              backgroundColor: "rgba(0,0,0,0.5)",
+              borderColor: "rgba(255,255,255,0.12)"
             }}
             whileTap={{ scale: 0.995 }}
             onClick={handleCopy}
@@ -93,7 +95,7 @@ export const ReferralInterface: React.FC = () => {
                 handleCopy();
               }
             }}
-            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-4 sm:p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 select-none transform-gpu transition-all duration-300 shadow-inner"
+            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-4 sm:p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 select-none transform-gpu transition-all duration-500 shadow-inner"
           >
             <div className="flex flex-col items-center gap-3">
               <span className="text-[9px] font-mono text-zinc-500 tracking-[0.3em] uppercase font-bold whitespace-nowrap">
