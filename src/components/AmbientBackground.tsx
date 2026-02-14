@@ -20,10 +20,9 @@ export const AmbientBackground: React.FC = () => {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
         this.size = Math.random() * 1.5 + 0.5;
-        // Decreased speed for a more serene atmosphere
-        this.speedX = (Math.random() - 0.5) * 0.15;
-        this.speedY = (Math.random() - 0.5) * 0.15;
-        this.opacity = Math.random() * 0.4 + 0.1;
+        this.speedX = (Math.random() - 0.5) * 0.12;
+        this.speedY = (Math.random() - 0.5) * 0.12;
+        this.opacity = Math.random() * 0.35 + 0.1;
       }
       update(width: number, height: number) {
         this.x += this.speedX;
@@ -33,6 +32,10 @@ export const AmbientBackground: React.FC = () => {
         if (this.y > height) this.y = 0;
         else if (this.y < 0) this.y = height;
       }
+      rescale(oldWidth: number, oldHeight: number, newWidth: number, newHeight: number) {
+        this.x = (this.x / oldWidth) * newWidth;
+        this.y = (this.y / oldHeight) * newHeight;
+      }
       draw(context: CanvasRenderingContext2D) {
         context.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
         context.beginPath();
@@ -41,9 +44,17 @@ export const AmbientBackground: React.FC = () => {
       }
     }
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      particles = Array.from({ length: particleCount }, () => new Particle(canvas.width, canvas.height));
+      const oldWidth = canvas.width;
+      const oldHeight = canvas.height;
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight;
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+      if (particles.length === 0) {
+        particles = Array.from({ length: particleCount }, () => new Particle(newWidth, newHeight));
+      } else {
+        particles.forEach(p => p.rescale(oldWidth, oldHeight, newWidth, newHeight));
+      }
     };
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -65,7 +76,7 @@ export const AmbientBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0 bg-[#050505]"
-      style={{ filter: 'blur(1.5px)' }}
+      style={{ filter: 'blur(1.2px)' }}
     />
   );
 };
