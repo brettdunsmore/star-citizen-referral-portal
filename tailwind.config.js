@@ -57,6 +57,11 @@ export default {
   				foreground: 'hsl(var(--accent-foreground))'
   			},
   		},
+      boxShadow: {
+        'glow': '0 0 20px rgba(251, 191, 36, 0.4)',
+        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        'primary': '0 4px 14px 0 rgba(243, 128, 32, 0.39)',
+      },
   		keyframes: {
   			'fade-in': {
   				'0%': { opacity: '0', transform: 'translateY(10px)' },
