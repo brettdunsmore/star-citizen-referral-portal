@@ -40,9 +40,11 @@ export function HomePage() {
   return (
     <div className="relative min-h-[100dvh] w-full bg-[#050505] overflow-x-hidden font-sans selection:bg-amber-500/30 selection:text-white flex flex-col">
       <AmbientBackground />
-      {/* Decorative Overlays */}
-      <div className="fixed inset-0 pointer-events-none z-[40] opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" aria-hidden="true" />
-      <div className="fixed inset-0 pointer-events-none z-10 bg-gradient-to-t from-black via-transparent to-black opacity-60" aria-hidden="true" />
+      {/* Decorative Overlays - Z-Index Layering */}
+      {/* Noise Texture Layer */}
+      <div className="fixed inset-0 pointer-events-none z-[50] opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" aria-hidden="true" />
+      {/* Ambient Gradient Vignette */}
+      <div className="fixed inset-0 pointer-events-none z-10 bg-gradient-to-t from-black via-transparent to-black opacity-80" aria-hidden="true" />
       <div className="flex-1 flex flex-col w-full relative z-20">
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex items-center justify-center py-12 md:py-20 lg:py-24">
           <motion.div
@@ -52,7 +54,7 @@ export function HomePage() {
             className="flex flex-col items-center text-center w-full max-w-4xl"
           >
             <motion.header variants={itemVariants} className="mb-12 md:mb-16 space-y-6">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-[0_0_25px_rgba(255,255,255,0.15)]">
                 Welcome <span className="text-zinc-500 transition-colors duration-1000 hover:text-amber-500/50 cursor-default">to the Verse!</span>
               </h1>
               <p className="text-lg md:text-xl text-zinc-400 max-w-xl mx-auto leading-relaxed font-light">
@@ -72,7 +74,7 @@ export function HomePage() {
                   alt="Star Citizen Gold Orb"
                   width={96}
                   height={96}
-                  className="w-full h-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-1000 ease-in-out cursor-default filter drop-shadow-[0_0_10px_rgba(245,158,11,0.2)]"
+                  className="w-full h-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-1000 ease-in-out cursor-default filter drop-shadow-[0_0_15px_rgba(245,158,11,0.25)]"
                   loading="eager"
                 />
               </div>

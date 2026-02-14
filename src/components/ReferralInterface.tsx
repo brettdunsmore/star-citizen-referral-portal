@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Copy, Check, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
@@ -9,6 +9,11 @@ const REFERRAL_CODE = 'STAR-XCTW-2GM7';
 const ENLIST_URL = 'https://www.robertsspaceindustries.com/enlist?referral=STAR-XCTW-2GM7';
 export const ReferralInterface: React.FC = () => {
   const [copied, setCopied] = useState(false);
+  useEffect(() => {
+    if (!copied) return;
+    const timer = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(timer);
+  }, [copied]);
   const handleCopy = useCallback(async () => {
     try {
       if (navigator.clipboard && window.isSecureContext) {
@@ -31,8 +36,6 @@ export const ReferralInterface: React.FC = () => {
         description: 'Code stored in your local buffer.',
         duration: 3000,
       });
-      const timer = setTimeout(() => setCopied(false), 2000);
-      return () => clearTimeout(timer);
     } catch (err) {
       console.error('Clipboard Access Denied:', err);
       toast.error('Copy Failed', {
@@ -47,7 +50,7 @@ export const ReferralInterface: React.FC = () => {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="w-full max-w-lg px-2 sm:px-4"
     >
-      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-2xl p-6 sm:p-8 md:p-12 shadow-glass transition-all duration-500 ease-out hover:scale-[1.01] hover:border-amber-500/20 transform-gpu group/card">
+      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-2xl p-6 sm:p-8 md:p-12 shadow-glass transition-all duration-500 ease-out transform-gpu group/card">
         {/* Animated Gradient Accent */}
         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-transparent pointer-events-none" />
         <div className="relative z-10 flex flex-col items-center text-center space-y-8">
@@ -68,7 +71,7 @@ export const ReferralInterface: React.FC = () => {
             role="button"
             aria-label={`Copy code ${REFERRAL_CODE}`}
             tabIndex={0}
-            whileHover={{ scale: 1.01, backgroundColor: "rgba(0,0,0,0.5)" }}
+            whileHover={{ scale: 1.02, backgroundColor: "rgba(0,0,0,0.5)" }}
             whileTap={{ scale: 0.98 }}
             onClick={handleCopy}
             onKeyDown={(e) => {
@@ -77,7 +80,7 @@ export const ReferralInterface: React.FC = () => {
                 handleCopy();
               }
             }}
-            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-5 sm:p-6 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50 select-none transform-gpu"
+            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-5 sm:p-6 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50 select-none transform-gpu"
           >
             <div className="flex flex-col items-center gap-3">
               <span className="text-[9px] font-mono text-zinc-500 tracking-widest uppercase">Referral Signature</span>
