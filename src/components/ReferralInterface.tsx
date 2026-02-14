@@ -55,13 +55,13 @@ export const ReferralInterface: React.FC = () => {
         duration: 0.6,
         ease: [0.22, 1, 0.36, 1]
       }}
-      className="w-full max-w-lg px-4"
+      className="w-full max-w-2xl px-4"
     >
-      <Card className="relative overflow-hidden border-white/5 bg-white/[0.03] backdrop-blur-3xl p-8 sm:p-10 md:p-14 shadow-glass group/card">
+      <Card className="relative overflow-hidden border-white/5 bg-white/[0.03] backdrop-blur-3xl p-6 sm:p-8 md:p-12 shadow-glass group/card">
         {/* Subtle radial highlight */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(251,191,36,0.05),transparent_70%)] pointer-events-none" />
-        <div className="relative z-10 flex flex-col items-center text-center space-y-10">
-          <div className="space-y-3">
+        <div className="relative z-10 flex flex-col items-center text-center space-y-8">
+          <div className="space-y-2">
             <motion.div
               className="flex items-center justify-center gap-2"
               animate={{ opacity: [0.6, 1, 0.6] }}
@@ -72,7 +72,7 @@ export const ReferralInterface: React.FC = () => {
                 Identity Verified
               </span>
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-white whitespace-nowrap">
+            <h2 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-white whitespace-nowrap">
               Access Granted
             </h2>
           </div>
@@ -81,11 +81,11 @@ export const ReferralInterface: React.FC = () => {
             aria-label={`Copy referral code ${REFERRAL_CODE}`}
             tabIndex={0}
             whileHover={{
-              scale: 1.01,
+              scale: 1.005,
               backgroundColor: "rgba(0,0,0,0.6)",
               borderColor: "rgba(255,255,255,0.15)"
             }}
-            whileTap={{ scale: 0.99 }}
+            whileTap={{ scale: 0.995 }}
             onClick={handleCopy}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -93,29 +93,29 @@ export const ReferralInterface: React.FC = () => {
                 handleCopy();
               }
             }}
-            className="group relative w-full cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 sm:p-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 select-none transform-gpu transition-all duration-300 shadow-inner"
+            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-4 sm:p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40 select-none transform-gpu transition-all duration-300 shadow-inner"
           >
-            <div className="flex flex-col items-center gap-4 max-w-full overflow-x-auto no-scrollbar">
-              <span className="text-[10px] font-mono text-zinc-400 tracking-[0.3em] uppercase font-bold whitespace-nowrap">
+            <div className="flex flex-col items-center gap-3">
+              <span className="text-[9px] font-mono text-zinc-500 tracking-[0.3em] uppercase font-bold whitespace-nowrap">
                 Signature Key
               </span>
-              <div className="flex items-center gap-6 whitespace-nowrap break-normal">
-                <span className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold tracking-tighter text-white tabular-nums drop-shadow-sm whitespace-nowrap">
+              <div className="flex flex-row items-center justify-center gap-6 md:gap-8 w-full">
+                <span className="text-xl sm:text-3xl md:text-4xl font-mono font-bold tracking-tighter text-white tabular-nums drop-shadow-sm whitespace-nowrap">
                   {REFERRAL_CODE}
                 </span>
                 <div aria-live="polite" className="shrink-0">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={copied ? 'checked' : 'copy'}
-                      initial={{ opacity: 0, scale: 0.5 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.5 }}
-                      transition={{ duration: 0.2 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.15 }}
                     >
                       {copied ? (
-                        <Check className="h-6 w-6 text-amber-500" />
+                        <Check className="h-5 w-5 sm:h-6 sm:w-6 text-amber-500" />
                       ) : (
-                        <Copy className="h-6 w-6 text-zinc-500 group-hover:text-amber-400 transition-colors" />
+                        <Copy className="h-5 w-5 sm:h-6 sm:w-6 text-zinc-500 group-hover:text-amber-400 transition-colors" />
                       )}
                     </motion.div>
                   </AnimatePresence>
@@ -123,11 +123,11 @@ export const ReferralInterface: React.FC = () => {
               </div>
             </div>
           </motion.div>
-          <div className="w-full space-y-5">
+          <div className="w-full space-y-4">
             <Button
               asChild
               className={cn(
-                "h-14 w-full bg-amber-500 text-black hover:bg-amber-400 font-black text-base transition-all rounded-xl shadow-glow border-none transform-gpu group/btn",
+                "h-12 w-full bg-amber-500 text-black hover:bg-amber-400 font-black text-sm transition-all rounded-lg shadow-glow border-none transform-gpu group/btn",
                 "relative overflow-hidden"
               )}
             >
@@ -139,8 +139,8 @@ export const ReferralInterface: React.FC = () => {
                 <span className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover/btn:animate-shimmer" />
               </a>
             </Button>
-            <p className="text-[11px] text-zinc-500 max-w-[260px] mx-auto leading-relaxed font-medium">
-              Join today to receive <span className="text-amber-500/90 font-bold">5,000 UEC</span> bonus credits for your initial journey.
+            <p className="text-[10px] text-zinc-500 max-w-[280px] mx-auto leading-relaxed font-medium">
+              Join the verse today to secure <span className="text-amber-500/90 font-bold">5,000 UEC</span> bonus credits for your initial journey.
             </p>
           </div>
         </div>
