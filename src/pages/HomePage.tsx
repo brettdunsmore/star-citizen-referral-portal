@@ -52,6 +52,9 @@ export function HomePage() {
             className="flex flex-col items-center text-center w-full max-w-5xl"
           >
             <motion.header variants={itemVariants} className="mb-8 md:mb-10">
+              <h2 className="text-xl md:text-2xl font-display font-bold text-zinc-300 mb-4 tracking-tight">
+  Star Citizen Referral
+</h2>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">
                 Join me <span className="text-zinc-500 transition-colors duration-1000 hover:text-amber-500/60 cursor-default">in the Verse</span>
               </h1>
