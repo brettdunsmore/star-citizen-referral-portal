@@ -11,34 +11,48 @@ export const ReferralInterface: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const handleCopy = useCallback(async () => {
     try {
+      // Primary Method: Modern Clipboard API
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(REFERRAL_CODE);
+        onCopySuccess();
       } else {
+        // Secondary Method: Legacy Textarea Fallback
         const textArea = document.createElement("textarea");
         textArea.value = REFERRAL_CODE;
+        // Ensure the textarea is hidden but part of the DOM
         textArea.style.position = "fixed";
         textArea.style.left = "-9999px";
         textArea.style.top = "0";
+        textArea.setAttribute('readonly', ''); // Prevent keyboard popup on mobile
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
+        // For iOS devices
+        textArea.setSelectionRange(0, 99999);
         const successful = document.execCommand('copy');
         document.body.removeChild(textArea);
-        if (!successful) throw new Error('execCommand copy failed');
+        if (successful) {
+          onCopySuccess();
+        } else {
+          throw new Error('Fallback copy failed');
+        }
       }
-      setCopied(true);
-      toast.success('Encryption Key Copied', {
-        description: 'The referral code is ready for your enlistment.',
-        duration: 4000,
-      });
-      setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Clipboard copy failed:', err);
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      console.error('Transmission Error Details:', errorMessage);
       toast.error('Transmission Error', {
-        description: `Please manually copy: ${REFERRAL_CODE}`,
+        description: `Manual override required: ${REFERRAL_CODE}`,
       });
     }
   }, []);
+  const onCopySuccess = () => {
+    setCopied(true);
+    toast.success('Encryption Key Copied', {
+      description: 'The referral code is ready for your enlistment.',
+      duration: 4000,
+    });
+    setTimeout(() => setCopied(false), 2000);
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

@@ -44,14 +44,14 @@ export function HomePage() {
                 Welcome <span className="text-zinc-500 transition-colors duration-1000">to the Verse!</span>
               </h1>
               <p className="text-lg md:text-xl text-zinc-400 max-w-xl mx-auto leading-relaxed font-light">
-                Become a Star Citizen today and secure your <span className="text-white font-medium">5,000 UEC</span> starting bonus.
+                Become a Star Citizen and get <span className="text-white font-medium">5,000 free Credits</span>
               </p>
             </motion.header>
             <motion.div variants={itemVariants} className="w-full flex justify-center">
               <ReferralInterface />
             </motion.div>
-            <motion.div 
-              variants={itemVariants} 
+            <motion.div
+              variants={itemVariants}
               className="mt-20 md:mt-28"
             >
               <div className="relative w-24 sm:w-32 h-24 sm:h-32 mx-auto flex items-center justify-center">
