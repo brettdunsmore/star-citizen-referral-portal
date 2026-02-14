@@ -142,7 +142,7 @@ export const ReferralInterface: React.FC = () => {
               </a>
             </Button>
             <p className="text-[10px] text-zinc-500 max-w-[280px] mx-auto leading-relaxed font-medium">
-              Using this referral and obtaining a Game Package with a minimum value of $40 USD on the Pledge Store, you will receive <span className="text-amber-500/90 font-bold">50,000 UEC</span> starting credits.
+              By using this referral code/link and obtaining a Game Package with a minimum value of $40 USD on the Pledge Store, you will receive <span className="text-amber-500/90 font-bold">50,000 UEC</span> starting credits in-game.
             </p>
           </div>
         </div>
