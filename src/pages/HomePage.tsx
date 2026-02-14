@@ -40,7 +40,7 @@ export function HomePage() {
             <div className="flex flex-col items-center w-full">
               <motion.header variants={itemVariants} className="mb-12 md:mb-16 space-y-6">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-tight">
-                  Citizenship <span className="text-zinc-600">Awaits</span>
+                  Welcome <span className="text-zinc-600">to the Verse!</span>
                 </h1>
                 <p className="text-lg md:text-xl text-zinc-400 max-w-xl mx-auto leading-relaxed font-light">
                   Embark on an odyssey across the stars. Claim your starting bonus
