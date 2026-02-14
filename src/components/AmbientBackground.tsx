@@ -20,9 +20,10 @@ export const AmbientBackground: React.FC = () => {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
         this.size = Math.random() * 1.5 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.12;
-        this.speedY = (Math.random() - 0.5) * 0.12;
-        this.opacity = Math.random() * 0.35 + 0.1;
+        // Speeds adjusted for subtle, cinematic drifting
+        this.speedX = (Math.random() - 0.5) * 0.1;
+        this.speedY = (Math.random() - 0.5) * 0.1;
+        this.opacity = Math.random() * 0.3 + 0.1;
       }
       update(width: number, height: number) {
         this.x += this.speedX;
@@ -33,8 +34,14 @@ export const AmbientBackground: React.FC = () => {
         else if (this.y < 0) this.y = height;
       }
       rescale(oldWidth: number, oldHeight: number, newWidth: number, newHeight: number) {
-        this.x = (this.x / oldWidth) * newWidth;
-        this.y = (this.y / oldHeight) * newHeight;
+        // Guard against division by zero or NaN during rapid window resizing
+        const ratioX = oldWidth > 0 ? newWidth / oldWidth : 1;
+        const ratioY = oldHeight > 0 ? newHeight / oldHeight : 1;
+        this.x = this.x * ratioX;
+        this.y = this.y * ratioY;
+        // Final safety check for NaN values
+        if (isNaN(this.x)) this.x = Math.random() * newWidth;
+        if (isNaN(this.y)) this.y = Math.random() * newHeight;
       }
       draw(context: CanvasRenderingContext2D) {
         context.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
@@ -57,13 +64,18 @@ export const AmbientBackground: React.FC = () => {
       }
     };
     const render = () => {
+      // Use low-alpha clear for a very slight motion trail effect if desired, 
+      // but here we stick to clean clear for minimalism
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update(canvas.width, canvas.height);
-        p.draw(ctx);
-      });
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update(canvas.width, canvas.height);
+        particles[i].draw(ctx);
+      }
       animationFrameId = requestAnimationFrame(render);
     };
+    // Initialize dimensions explicitly before first render
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     window.addEventListener('resize', resize);
     resize();
     render();
@@ -76,7 +88,7 @@ export const AmbientBackground: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0 bg-[#050505]"
-      style={{ filter: 'blur(1.2px)' }}
+      style={{ filter: 'blur(1px)' }}
     />
   );
 };
