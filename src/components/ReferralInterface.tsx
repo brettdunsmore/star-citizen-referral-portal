@@ -47,10 +47,15 @@ export const ReferralInterface: React.FC = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -5 }}
+      transition={{ 
+        duration: 0.8, 
+        ease: [0.16, 1, 0.3, 1],
+        y: { duration: 0.4, ease: "easeOut" } 
+      }}
       className="w-full max-w-lg px-2 sm:px-4"
     >
-      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-2xl p-6 sm:p-8 md:p-12 shadow-glass transition-all duration-500 ease-out transform-gpu group/card">
+      <Card className="relative overflow-hidden border-white/5 bg-white/5 backdrop-blur-2xl p-6 sm:p-8 md:p-12 shadow-glass group/card">
         {/* Animated Gradient Accent */}
         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-transparent pointer-events-none" />
         <div className="relative z-10 flex flex-col items-center text-center space-y-8">
@@ -71,7 +76,11 @@ export const ReferralInterface: React.FC = () => {
             role="button"
             aria-label={`Copy code ${REFERRAL_CODE}`}
             tabIndex={0}
-            whileHover={{ scale: 1.02, backgroundColor: "rgba(0,0,0,0.5)" }}
+            whileHover={{ 
+              scale: 1.02, 
+              backgroundColor: "rgba(0,0,0,0.5)",
+              borderColor: "rgba(255,255,255,0.2)"
+            }}
             whileTap={{ scale: 0.98 }}
             onClick={handleCopy}
             onKeyDown={(e) => {
@@ -80,7 +89,7 @@ export const ReferralInterface: React.FC = () => {
                 handleCopy();
               }
             }}
-            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-5 sm:p-6 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50 select-none transform-gpu"
+            className="group relative w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-black/40 p-5 sm:p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50 select-none transform-gpu transition-shadow duration-300"
           >
             <div className="flex flex-col items-center gap-3">
               <span className="text-[9px] font-mono text-zinc-500 tracking-widest uppercase">Referral Signature</span>
