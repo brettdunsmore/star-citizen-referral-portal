@@ -77,36 +77,36 @@ export function HomePage() {
                 />
               </div>
             </motion.div> 
-            <motion.footer
-              variants={itemVariants}
-              className="mt-12 text-[8px] uppercase tracking-[0.5em] text-zinc-700 font-medium px-6 max-w-[90vw] mx-auto select-none"
-            >
-              Star Citizen is a registered trademark of Cloud Imperium Games.
-<div className="flex flex-col items-center space-y-4">
-  <div className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 font-medium">
-    Referred by{" "}
-    <a
-      href="https://robertsspaceindustries.com/en/citizens/Quantum_Reaction"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-amber-500/80 hover:text-amber-400 underline decoration-amber-500/20 underline-offset-4 transition-all duration-300"
-    >
-      Quantum_Reaction
-    </a>
+<motion.footer
+  variants={itemVariants}
+  className="mt-12 text-[8px] uppercase tracking-[0.5em] text-zinc-700 font-medium px-6 max-w-[90vw] mx-auto select-none"
+>
+  Star Citizen is a registered trademark of Cloud Imperium Games.
+  <div className="flex flex-col items-center space-y-4 mt-6">
+    <div className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 font-medium">
+      Referred by{" "}
+      
+        href="https://robertsspaceindustries.com/en/citizens/Quantum_Reaction"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-amber-500/80 hover:text-amber-400 underline decoration-amber-500/20 underline-offset-4 transition-all duration-300"
+      >
+        Quantum_Reaction
+      </a>
+    </div>
+    <div className="text-[9px] uppercase tracking-[0.3em] text-zinc-600 font-medium">
+      Follow on X:{" "}
+      
+        href="https://x.com/brett_dunsmore"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-amber-400 hover:text-amber-300 underline transition-colors duration-300"
+      >
+        @brett_dunsmore
+      </a>
+    </div>
   </div>
-  <div className="text-[9px] uppercase tracking-[0.3em] text-zinc-600 font-medium">
-    Follow on X:{" "}
-    <a
-      href="https://x.com/brett_dunsmore"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-amber-400 hover:text-amber-300 underline transition-colors duration-300"
-    >
-      @brett_dunsmore
-    </a>
-  </div>
-</div>
-              </motion.footer>
+</motion.footer>
           </motion.div>      
         </main>        
       </div>
