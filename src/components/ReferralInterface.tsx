@@ -35,7 +35,7 @@ export const ReferralInterface: React.FC = () => {
         }
       }
       setCopied(true);
-      toast.success('Access Key Copied', {
+      toast.success('Referral Code Copied', {
         description: 'Code stored for enlistment.',
       });
     } catch (err) {
