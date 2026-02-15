@@ -79,17 +79,17 @@ export function HomePage() {
             </motion.div> 
             <motion.footer
               variants={itemVariants}
-              className="mt-12 text-[8px] uppercase tracking-[0.5em] text-zinc-700 font-medium px-6 max-w-[90vw] mx-auto select-none"
-            >
-              Star Citizen is a registered trademark of Cloud Imperium Games.
-            </motion.footer>
-          </motion.div>      
                <div className="text-[9px] uppercase tracking-[0.3em] text-zinc-600 font-medium">
                 Referred by{' '}
                 <a href="https://robertsspaceindustries.com/en/citizens/Quantum_Reaction" target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:text-amber-300 underline">
                 Quantum_Reaction
               </a>
             </div>
+              className="mt-12 text-[8px] uppercase tracking-[0.5em] text-zinc-700 font-medium px-6 max-w-[90vw] mx-auto select-none"
+            >
+              Star Citizen is a registered trademark of Cloud Imperium Games.
+            </motion.footer>
+          </motion.div>      
         </main>        
       </div>
       <Toaster
