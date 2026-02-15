@@ -99,7 +99,7 @@ export function HomePage() {
                   </a>
                 </div>
               </div>
-              <p className="text-[8px] uppercase tracking-[0.5em] text-zinc-700 font-medium text-center leading-loose opacity-60">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-600 font-medium text-center leading-relaxed opacity-80">
                 This is an unofficial Star Citizen fan site, not affiliated with the Cloud Imperium group of companies. All content on this site not authored by its host or users are property of their respective owners.
               </p>
             </motion.footer>
