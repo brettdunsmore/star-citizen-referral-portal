@@ -66,7 +66,7 @@ export function HomePage() {
               variants={logoVariants}
               className="mt-16 md:mt-20"
             >
-              <div className="relative w-16 h-16 mx-auto flex items-center justify-center">
+              <div className="relative w-16 h-16 mx-auto flex items-center justify-center space-y-4">
                 <img
                   src="https://support.robertsspaceindustries.com/hc/article_attachments/360021770294"
                   alt="Star Citizen Logo"
