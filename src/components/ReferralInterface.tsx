@@ -99,7 +99,7 @@ export const ReferralInterface: React.FC = () => {
           >
             <div className="flex flex-col items-center gap-3">
               <span className="text-[9px] font-mono text-zinc-500 tracking-[0.3em] uppercase font-bold whitespace-nowrap">
-                Referral from Quantum_Reaction
+                Referral Code
               </span>
               <div className="flex flex-row items-center justify-center gap-6 md:gap-8 w-full">
                 <span className="text-xl sm:text-3xl md:text-4xl font-mono font-bold tracking-tighter text-white tabular-nums drop-shadow-sm whitespace-nowrap">
