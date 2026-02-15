@@ -99,7 +99,7 @@ export const ReferralInterface: React.FC = () => {
           >
             <div className="flex flex-col items-center gap-3">
               <span className="text-[9px] font-mono text-zinc-500 tracking-[0.3em] uppercase font-bold whitespace-nowrap">
-                Referral Code for Quantum_Reaction
+                Referral from Quantum_Reaction
               </span>
               <div className="flex flex-row items-center justify-center gap-6 md:gap-8 w-full">
                 <span className="text-xl sm:text-3xl md:text-4xl font-mono font-bold tracking-tighter text-white tabular-nums drop-shadow-sm whitespace-nowrap">
@@ -142,7 +142,7 @@ export const ReferralInterface: React.FC = () => {
               </a>
             </Button>
             <p className="text-[10px] text-zinc-500 max-w-[280px] mx-auto leading-relaxed font-medium">
-              By using this referral code/link and obtaining a Game Package with a minimum value of $40 USD on the Pledge Store, you will receive <span className="text-amber-500/90 font-bold">50,000 UEC</span> starting credits.
+              By using this referral code/link and obtaining a Game Package with a minimum value of $40 USD on the Pledge Store, you will receive <span className="text-amber-500/90 font-bold">50,000 UEC</span> starting credits and a potential bonus seasonal reward (if applicable at time of use).
             </p>
           </div>
         </div>
