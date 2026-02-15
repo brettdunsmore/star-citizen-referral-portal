@@ -79,10 +79,12 @@ export function HomePage() {
             </motion.div> 
 <motion.footer
   variants={itemVariants}
-  className="mt-12 text-[8px] uppercase tracking-[0.5em] text-zinc-700 font-medium px-6 max-w-[90vw] mx-auto select-none"
+  className="mt-12 px-6 max-w-[90vw] mx-auto select-none"
 >
-  Star Citizen is a registered trademark of Cloud Imperium Games.
-  <div className="flex flex-col items-center space-y-4 mt-6">
+  <div className="text-[8px] uppercase tracking-[0.5em] text-zinc-700 font-medium mb-8 text-center">
+    Star Citizen is a registered trademark of Cloud Imperium Games.
+  </div>
+  <div className="flex flex-col items-center space-y-4">
     <div className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 font-medium">
       Referred by{" "}
       
