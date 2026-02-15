@@ -75,6 +75,13 @@ export function HomePage() {
                   className="w-16 h-16 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1000 ease-in-out cursor-default filter drop-shadow-[0_0_10px_rgba(245,158,11,0.1)] object-contain"
                   loading="eager"
                 />
+              
+                <div className="text-[9px] uppercase tracking-[0.3em] text-zinc-600 font-medium">
+  Referred by{' '}
+  <a href="https://robertsspaceindustries.com/en/citizens/Quantum_Reaction" target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:text-amber-300 underline">
+    Quantum_Reaction
+  </a>
+</div>
               </div>
             </motion.div>
             <motion.footer
